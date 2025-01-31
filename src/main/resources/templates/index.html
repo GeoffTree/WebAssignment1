@@ -2,9 +2,19 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/css/header.css" th:href="@{css/header.css}">
+
+    <link rel="stylesheet" href="../static/css/footer.css" th:href="@{css/footer.css}">
     <title>Index</title>
 </head>
 <body>
-
+<header th:replace="~{HeaderAndFooter::Header}">
+    <h1>Welcome to the Tree Bookstore</h1>
+</header>
+<main></main>
+<footer th:replace="~{HeaderAndFooter::Footer}">
+    Geoffrey Trenholm
+    Student ID: 991712128
+</footer>
 </body>
 </html>

@@ -3,18 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../static/css/header.css" th:href="@{css/header.css}">
-
     <link rel="stylesheet" href="../static/css/footer.css" th:href="@{css/footer.css}">
     <title>Index</title>
 </head>
+
 <body>
-<header th:replace="~{HeaderAndFooter::Header}">
-    <h1>Welcome to the Tree Bookstore</h1>
-</header>
-<main></main>
-<footer th:replace="~{HeaderAndFooter::Footer}">
-    Geoffrey Trenholm
-    Student ID: 991712128
-</footer>
+    <header th:replace="~{HeaderAndFooter::Header}">
+        <h1>some text</h1>
+    </header>
+
+    <main>
+        <img src="../static/images/homePage.jpg" alt="Home Image">
+    </main>
+
+    <footer th:replace="~{HeaderAndFooter::Footer}">
+        some text
+    </footer>
 </body>
 </html>

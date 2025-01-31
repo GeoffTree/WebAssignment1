@@ -2,9 +2,19 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/css/header.css" th:href="@{css/header.css}">
+    <link rel="stylesheet" href="../static/css/footer.css" th:href="@{css/footer.css}">
     <title>Available Books</title>
 </head>
 <body>
+    <header th:replace="~{HeaderAndFooter::Header}">
+        <h1>some text</h1>
+    </header>
 
+    <main></main>
+
+    <footer th:replace="~{HeaderAndFooter::Footer}">
+        some text
+    </footer>
 </body>
 </html>

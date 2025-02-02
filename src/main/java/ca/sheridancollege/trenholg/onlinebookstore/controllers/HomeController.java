@@ -15,13 +15,11 @@ public class HomeController {
     @Autowired
     private BookList bookList;
 
-    @Autowired
-    private BookCartList bookCart;
-
     @ModelAttribute("cart")
-    public BookCartList getCart() {
-        return bookCart;
-    }
+    public BookCartList getCart(){
+        return new BookCartList();
+    };
+
 
     @GetMapping("/")
     public String index(Model model) {
@@ -40,10 +38,11 @@ public class HomeController {
         bookList.addBook(book);
         return "redirect:/Books";
     }
+
     @GetMapping("/ShoppingBook")
-    public String shoppingBook(Model model) {
+    public String shoppingBook(Model model, @ModelAttribute("cart") BookCartList cart) {
         model.addAttribute("books", bookList.getBooks());
-        model.addAttribute("cartSize", bookCart.getSize());
+        model.addAttribute("cartSize", cart.getSize());
         return "ShoppingBook";
     }
 
@@ -59,7 +58,8 @@ public class HomeController {
     }
 
     @GetMapping("/Checkout")
-    public String checkout(Model model) {
+    public String checkout(Model model, @ModelAttribute("cart") BookCartList cart) {
+        model.addAttribute("cartItems", cart.getCartBooks());
         return "checkout";
     }
 

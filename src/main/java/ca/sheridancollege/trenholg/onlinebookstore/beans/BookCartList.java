@@ -1,5 +1,6 @@
 package ca.sheridancollege.trenholg.onlinebookstore.beans;
 
+import lombok.Getter;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

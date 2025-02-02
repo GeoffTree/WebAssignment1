@@ -10,7 +10,32 @@
     <header th:replace="~{HeaderAndFooter::Header}">
         <h1>some text</h1>
     </header>
-    <main></main>
+
+    <main>
+        <h2>Checkout</h2>
+        <table th:if="${cart !=null}">
+
+            <thead>
+                <tr>
+                    <th>ISBN</th>
+                    <th>TITLE</th>
+                    <th>AUTHOR</th>
+                    <th>PRICE</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr th:each="book : ${cartItems}">
+                    <td th:text="${book.bookISBN}">ISBN</td>
+                    <td th:text="${book.bookTitle}">Title</td>
+                    <td th:text="${book.bookAuthor}">Author</td>
+                    <td th:text="${book.bookPrice}">Price</td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
+
     <footer th:replace="~{HeaderAndFooter::Footer}">
         some text
     </footer>

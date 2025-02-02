@@ -7,7 +7,15 @@
 <body>
 
 <header th:fragment="Header">
-  <h1>Welcome to Tree Book Store</h1>
+  <h1>Tree Book Store</h1>
+    <nav>
+        <ul>
+            <li><a th:href="@{/}">Home</a></li>
+            <li><a th:href="@{/Books}">Books</a></li>
+            <li><a th:href="@{/ShoppingCart}">Shopping Cart</a></li>
+            <li><a th:href="@{/Checkout}">Checkout</a></li>
+        </ul>
+    </nav>
 </header>
 
 <main>content</main>

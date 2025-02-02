@@ -11,7 +11,16 @@
         <h1>some text</h1>
     </header>
 
-    <main></main>
+    <main>
+        <table th:if="${books !=null}">
+            <tr th:each="book : ${books}">
+                <td th:text="${book.bookISBN}">ISBN</td>
+                <td th:text="${book.bookTitle}">Title</td>
+                <td th:text="${book.bookAuthor}">Author</td>
+                <td th:text="${book.bookPrice}">Price</td>
+            </tr>
+        </table>
+    </main>
 
     <footer th:replace="~{HeaderAndFooter::Footer}">
         some text

@@ -60,6 +60,9 @@ public class HomeController {
     @GetMapping("/Checkout")
     public String checkout(Model model, @ModelAttribute("cart") BookCartList cart) {
         model.addAttribute("cartItems", cart.getCartBooks());
+        model.addAttribute("subtotal", String.format("%.2f", cart.getSubtotal()));
+        model.addAttribute("salesTax", String.format("%.2f", cart.getSaleTax()));
+        model.addAttribute("total", String.format("%.2f", cart.getTotal()));
         return "checkout";
     }
 

@@ -29,8 +29,30 @@
                     <td th:text="${book.bookISBN}">ISBN</td>
                     <td th:text="${book.bookTitle}">Title</td>
                     <td th:text="${book.bookAuthor}">Author</td>
-                    <td th:text="${book.bookPrice}">Price</td>
+                    <td th:text="${#numbers.formatDecimal(book.bookPrice, 1, 2)}"></td>
                 </tr>
+
+            <tr>
+                <td colspan="4"><strong>Subtotal</strong></td>
+            </tr>
+            <tr>
+                <td colspan="4" th:text="${subtotal}">10.10</td>
+            </tr>
+
+            <tr>
+                <td colspan="4"><strong>Tax</strong></td>
+            </tr>
+            <tr>
+                <td colspan="4" th:text="${salesTax}">10.10</td>
+            </tr>
+
+            <tr>
+                <td colspan="4"><strong>Total</strong></td>
+            </tr>
+            <tr>
+                <td colspan="4" th:text="${total}">10.10</td>
+            </tr>
+
             </tbody>
         </table>
     </main>

@@ -9,6 +9,7 @@ import java.util.List;
 @Component
 public class BookCartList {
     private List<Book> cartBooks = new ArrayList<>();
+    private  static final double sale_tax = 0.13;
 
     public void addToCart(Book book) {
         cartBooks.add(book);
@@ -20,5 +21,17 @@ public class BookCartList {
 
     public int getSize() {
         return cartBooks.size();
+    }
+
+    public double getSubtotal() {
+        return cartBooks.stream().mapToDouble(Book::getBookPrice).sum();
+    }
+
+    public double getSaleTax() {
+        return getSubtotal() * sale_tax;
+    }
+
+    public double getTotal() {
+        return getSubtotal() + getSaleTax();
     }
 }

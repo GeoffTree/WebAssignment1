@@ -33,7 +33,7 @@
         <td th:text="${book.bookISBN}">ISBN</td>
         <td th:text="${book.bookTitle}">Title</td>
         <td th:text="${book.bookAuthor}">Author</td>
-        <td th:text="${book.bookPrice}">Price</td>
+        <td th:text="${#numbers.formatDecimal(book.bookPrice, 1, 2)}"></td>
         <td>
           <a th:href="@{/addToCart/{isbn}(isbn=${book.bookISBN})}">Add to Cart</a>
         </td>

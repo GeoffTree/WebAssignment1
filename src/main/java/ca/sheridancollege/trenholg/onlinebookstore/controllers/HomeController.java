@@ -47,7 +47,7 @@ public class HomeController {
         return "ShoppingBook";
     }
 
-    @PostMapping("/addToCart/{isbn}")
+    @GetMapping("/addToCart/{isbn}")
     public String addToCart(@PathVariable("isbn") String isbn, @ModelAttribute("cart") BookCartList cart) {
         for (Book book : bookList.getBooks()) {
             if (book.getBookISBN().equals(isbn)) {

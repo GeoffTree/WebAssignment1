@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="../static/css/header.css" th:href="@{css/header.css}">
@@ -12,7 +12,32 @@
     <h1>some text</h1>
   </header>
 
-  <main></main>
+  <main>
+    <h2>Shopping Page</h2>
+    <table th:if="${books !=null}">
+
+      <thead>
+      <tr>
+        <th>ISBN</th>
+        <th>TITLE</th>
+        <th>AUTHOR</th>
+        <th>PRICE</th>
+        <th>ADD TO CART</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr th:each="book : ${books}">
+        <td th:text="${book.bookISBN}">ISBN</td>
+        <td th:text="${book.bookTitle}">Title</td>
+        <td th:text="${book.bookAuthor}">Author</td>
+        <td th:text="${book.bookPrice}">Price</td>
+        <td>Add to Cart</td>
+      </tr>
+      </tbody>
+
+    </table>
+  </main>
 
   <footer th:replace="~{HeaderAndFooter::Footer}">
     some text

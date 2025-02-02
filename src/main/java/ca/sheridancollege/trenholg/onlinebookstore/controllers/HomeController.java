@@ -32,14 +32,16 @@ public class HomeController {
         bookList.addBook(book);
         return "redirect:/Books";
     }
+    @GetMapping("/ShoppingBook")
+    public String shoppingBook(Model model) {
+        model.addAttribute("books", bookList.getBooks());
+        return "ShoppingBook";
+    }
 
     @GetMapping("/Checkout")
     public String checkout(Model model) {
         return "checkout";
     }
 
-    @GetMapping("/ShoppingCart")
-    public String shoppingBook(Model model) {
-        return "shoppingBook";
-    }
+
 }

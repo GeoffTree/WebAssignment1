@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="../static/css/header.css" th:href="@{css/header.css}">
@@ -8,6 +9,7 @@
 </head>
 
 <body>
+
   <header th:replace="~{HeaderAndFooter::Header}">
     <h1>some text</h1>
   </header>
@@ -33,21 +35,34 @@
         <td th:text="${book.bookAuthor}">Author</td>
         <td th:text="${book.bookPrice}">Price</td>
         <td>
-          <form th:action="@{/addToCart/{isbn}(isbn=${book.bookISBN})}" method="post">
-            <button type="submit">Add to Cart</button>
-          </form>
+          <a th:href="@{/addToCart/{isbn}(isbn=${book.bookISBN})}">Add to Cart</a>
         </td>
       </tr>
       </tbody>
+
     </table>
 
-    <h3>Items in Cart</h3>
-    <p>Count: <span th:text="${cartSize}">0</span></p>
+    <table>
+
+      <thead>
+        <tr>
+          <th>Items in Cart</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td th:text="${cartSize}">0</td>
+        </tr>
+      </tbody>
+
+    </table>
   </main>
 
   <footer th:replace="~{HeaderAndFooter::Footer}">
     some text
   </footer>
+
 </body>
 
 </html>

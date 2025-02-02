@@ -1,19 +1,27 @@
 package ca.sheridancollege.trenholg.onlinebookstore.controllers;
 
+import ca.sheridancollege.trenholg.onlinebookstore.beans.BookCartList;
 import ca.sheridancollege.trenholg.onlinebookstore.beans.BookList;
 import ca.sheridancollege.trenholg.onlinebookstore.beans.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 
 @Controller
+@SessionAttributes("cart")
 public class HomeController {
     @Autowired
     private BookList bookList;
+
+    @Autowired
+    private BookCartList bookCart;
+
+    @ModelAttribute("cart")
+    public BookCartList getCart() {
+        return bookCart;
+    }
 
     @GetMapping("/")
     public String index(Model model) {
@@ -35,7 +43,19 @@ public class HomeController {
     @GetMapping("/ShoppingBook")
     public String shoppingBook(Model model) {
         model.addAttribute("books", bookList.getBooks());
+        model.addAttribute("cartSize", bookCart.getSize());
         return "ShoppingBook";
+    }
+
+    @PostMapping("/addToCart/{isbn}")
+    public String addToCart(@PathVariable("isbn") String isbn, @ModelAttribute("cart") BookCartList cart) {
+        for (Book book : bookList.getBooks()) {
+            if (book.getBookISBN().equals(isbn)) {
+                cart.addToCart(book);
+                break;
+            }
+        }
+        return "redirect:/ShoppingBook";
     }
 
     @GetMapping("/Checkout")
